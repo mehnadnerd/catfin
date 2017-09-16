@@ -20,7 +20,7 @@ var config = {
 
 
 function runSql(query, res) {
-    //console.log('Received query '+query);
+    console.log('Received query '+query);
     var connection = new Connection(config);
     //connection.on('debug', function(err) { console.log('debug:', err);});
     connection.on('connect', function (err) {
@@ -40,7 +40,7 @@ function runSql(query, res) {
                 if ('' == result) {
                     result = '{}'
                 }
-                //console.log('Returning: '+result);
+                console.log('Returning: '+result);
                 connection.close();
                 //do response
                 res.append('Content-Type', 'application/json');
@@ -70,7 +70,7 @@ app.get('/transaction', function (req, res) {
     runSql('exec dp_transaction ' + req.query.user, res);
 });
 
-app.get('/transaction', function (req, res) {
+app.get('/category', function (req, res) {
     runSql('exec dp_category', res);
 });
 
