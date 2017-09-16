@@ -21,7 +21,7 @@ var config = {
 
 
 function runSql(query, res) {
-    console.log('Received query '+query);
+    console.log('Received query ' + query);
     var connection = new Connection(config);
     connection.on('debug', function (err) {
         console.log('debug:', err);
@@ -43,7 +43,7 @@ function runSql(query, res) {
                 if ('' == result) {
                     result = '{}'
                 }
-                console.log('Returning: '+result);
+                console.log('Returning: ' + result);
                 connection.close();
                 //do response
                 res.append('Content-Type', 'application/json');
@@ -79,6 +79,10 @@ app.get('/category', function (req, res) {
 
 app.post('/create/user', function (req, res) {
     runSql('exec up_create_user ' + req.query.username, res);
+});
+
+app.post('/create/goal', function (req, res) {
+    runSql('exec up_create_goal ' + req.query.user + ',' + req.query.goalname + ',' + req.query.goalamt, res);
 });
 
 app.post('/transaction', function (req, res) {
