@@ -7,6 +7,7 @@ fs.readFile('password', 'utf8', function (err, data) {
         return console.log(err);
     }
     config.password = data;
+    console.log('Set password');
 });
 
 var Connection = require('tedious').Connection;
@@ -22,7 +23,9 @@ var config = {
 function runSql(query, res) {
     console.log('Received query '+query);
     var connection = new Connection(config);
-    //connection.on('debug', function(err) { console.log('debug:', err);});
+    connection.on('debug', function (err) {
+        console.log('debug:', err);
+    });
     connection.on('connect', function (err) {
         if (err) {
             console.log(err);
