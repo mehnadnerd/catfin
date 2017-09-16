@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "express": "^4.15.4",
+    "mssql": "^4.0.4"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mehnadnerd/catfin.git"
