@@ -82,11 +82,11 @@ app.post('/create/user', function (req, res) {
 });
 
 app.post('/create/goal', function (req, res) {
-    runSql('exec up_create_goal ' + req.query.user + ',' + req.query.goalname + ',CONVERT(MONEY,' + req.query.goalamt + ')', res);
+    runSql('exec up_create_goal ' + req.query.user + ',' + req.query.goalname + ',CAST(,' + req.query.goalamt + ' AS MONEY)', res);
 });
 
 app.post('/transaction', function (req, res) {
-    runSql('exec up_do_transaction ' + req.query.user + ',' + req.query.transname + ',CONVERT(MONEY,' + req.query.transamt + '),' + req.query.transcat, res);
+    runSql('exec up_do_transaction ' + req.query.user + ',' + req.query.transname + ',CAST(' + req.query.transamt + ' AS MONEY),' + req.query.transcat, res);
 });
 
 
